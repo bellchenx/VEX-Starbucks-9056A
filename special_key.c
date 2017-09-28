@@ -1,0 +1,59 @@
+
+void special_key_handle()
+{
+	if(key_special_key)
+	{
+		pwr_off=0;
+		claw_func(0);
+		Move_Stop();
+		updown_func(0);
+		while(key_special_key)
+		{
+			RT_MOVE();
+			updown_func(vexRT[Ch2]/127.0*pwr_updown_safe);
+
+			if(vexRT[Btn6U])
+			{
+				clearDebugStream();
+				SensorValue[Gyro]=0;
+			}
+
+			if(1)//AutoRoute_1_where_to_throw
+			{
+				if(LCD_Btn_Pressed(LCD_Btn_Center))
+				{
+					StopTask(disp_logo);
+					AutoRoute_1_where_to_throw=0;
+					LCD_Clear();
+					bLCDBacklight=true;
+					displayLCDCenteredString(0,"throw");
+					displayLCDCenteredString(1,"center");
+					LCD_wait_for_release(LCD_Btn_Center);
+					StartTask(disp_logo);
+				}
+				if(LCD_Btn_Pressed(LCD_Btn_Right))
+				{
+					StopTask(disp_logo);
+					AutoRoute_1_where_to_throw=1;
+					LCD_Clear();
+					bLCDBacklight=true;
+					displayLCDCenteredString(0,"throw");
+					displayLCDCenteredString(1,"forward");
+					LCD_wait_for_release(LCD_Btn_Right);
+					StartTask(disp_logo);
+				}
+				if(LCD_Btn_Pressed(LCD_Btn_Left))
+				{
+					StopTask(disp_logo);
+					AutoRoute_1_where_to_throw=-1;
+					LCD_Clear();
+					bLCDBacklight=true;
+					displayLCDCenteredString(0,"throw");
+					displayLCDCenteredString(1,"backward");
+					LCD_wait_for_release(LCD_Btn_Left);
+					StartTask(disp_logo);
+				}
+			}
+		}
+	}
+}
