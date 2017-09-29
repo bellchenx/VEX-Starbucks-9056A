@@ -1,5 +1,5 @@
-# VEX-Starbucks-9056A
-VEX Starbucks 9056A Back-throwing Machine
+# VEX-Starstruck-9056A
+VEX Starstruck 9056A Back-throwing Machine
 
 # Details
 This is program of Team 9056A Starbucks Robot.
